@@ -23,14 +23,14 @@ const App = () => {
       <SearchBar/>
       <Routes>
         <Route path = '/' element = {<Home/>}/>
-        <Route path = '/Collections' element = {<Collections/>}/>
-        <Route path = '/About' element = {<About/>}/>
-        <Route path = '/Contact' element = {<Contact/>}/>
+        <Route path = '/collection' element = {<Collections/>}/>
+        <Route path = '/about' element = {<About/>}/>
+        <Route path = '/contact' element = {<Contact/>}/>
         <Route path = '/product/:ProductId' element = {<Product/>}/>
-        <Route path = '/Cart' element = {<Cart/>}/>
-        <Route path = '/Login' element = {<Login/>}/>
-        <Route path = '/Place-order' element = {<PlaceOrder/>}/>
-        <Route path = '/Orders' element = {<Orders/>}/>
+        <Route path = '/cart' element = {<Cart/>}/>
+        <Route path = '/login' element = {<Login/>}/>
+        <Route path = '/place-order' element = {<PlaceOrder/>}/>
+        <Route path = '/orders' element = {<Orders/>}/>
       </Routes>
       <Footer/>
     </div>

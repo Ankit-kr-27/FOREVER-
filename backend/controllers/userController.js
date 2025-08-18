@@ -46,7 +46,7 @@ const registerUser = async (req,res) => {
     // check user if exist or not 
     const exists = await userModel.findOne({email});
     if (exists) {
-      return res.json({success:false, message:"user already exists"})
+      return res.json({success:false, message:"user already exists"});
     } 
 
     // validating email format and strong password
@@ -64,14 +64,14 @@ const registerUser = async (req,res) => {
     const newUser = new userModel({
       name,
       email,
-      password:hashedPassword
+      password:hashedPassword,
     })
 
-    const user = await newUser.save()
+    const user = await newUser.save();
 
-    const token = createToken(user._id)
+    const token = createToken(user._id);
 
-    res.json({success:true,token})
+    res.json({success:true,token});
 
   } catch (error) {
     console.log(error);
