@@ -1,15 +1,15 @@
-import { useContext, useState } from 'react'
+import React ,{ useContext, useState } from 'react'
 import Title from '../components/Title'
 import CartTotal from '../components/CartTotal'
 import { assets } from '../assets/assets'
 import { ShopContext } from '../context/ShopContext'
-import axios from 'axios'
-import { toast } from 'react-toastify'
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const PlaceOrder = () => {
 
   const [method,setMethod] = useState('cod');
-  const {navigate,backendUrl,token, cartItems, setCartItems, getCartamount, delivery_fee, products} = useContext(ShopContext);
+  const {navigate,backendUrl,token, cartItems, setCartItems, getCartAmount, delivery_fee, products,} = useContext(ShopContext);
 
 
   const [formData, setFormData] = useState({
@@ -32,10 +32,11 @@ const PlaceOrder = () => {
   };
 
   const onSubmitHandler = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
      
       let orderItems = [];
+
       for(const items in cartItems){
         for(const item in cartItems[items]){
           if (cartItems[items][item] > 0) {
@@ -52,7 +53,7 @@ const PlaceOrder = () => {
       let orderData = {
         address: formData,
         items: orderItems,
-        amount: getCartamount() + delivery_fee,
+        amount: getCartAmount() + delivery_fee,
       }
 
       switch(method){
@@ -74,6 +75,7 @@ const PlaceOrder = () => {
           break;
 
       }
+      
       
       
     } catch (error) {
@@ -119,11 +121,11 @@ const PlaceOrder = () => {
           <div className='flex gap-3 flex-col lg:flex-row'>
             <div onClick ={() =>setMethod('stripe')} className='flex items-center gap-3 border p-2 px-3 cursor-pointer'>
               <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'stripe' ? 'bg-green-700' : ''} `}></p>
-              <img className='h-5 mx-4' src={assets.stripe_logo} alt="" srcset="" />
+              <img className='h-5 mx-4' src={assets.stripe_logo} />
             </div>
             <div onClick ={() =>setMethod('razorpay')} className='flex items-center gap-3 border p-2 px-3 cursor-pointer'>
               <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'razorpay' ? 'bg-green-700' : ''} `}></p>
-              <img className='h-5 mx-4' src={assets.razorpay_logo} alt="" srcset="" />
+              <img className='h-5 mx-4' src={assets.razorpay_logo}  />
             </div>
             <div onClick ={() =>setMethod('cod')} className='flex items-center gap-3 border p-2 px-3 cursor-pointer'>
               <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'cod' ? 'bg-green-700' : ''} `}></p>
